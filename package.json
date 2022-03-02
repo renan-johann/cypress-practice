@@ -1,0 +1,28 @@
+{
+  "name": "cypress-practice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "cy:run": "cypress run",
+    "cy:open": "cypress open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/renan-johann/cypress-practice.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/renan-johann/cypress-practice/issues"
+  },
+  "homepage": "https://github.com/renan-johann/cypress-practice#readme",
+  "dependencies": {
+    "cypress": "^9.5.1"
+  },
+  "devDependencies": {
+    "standard": "^16.0.4",
+    "typescript": "^4.6.2"
+  }
+}
