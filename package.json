@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "cy:run": "cypress run",
+    "cy:basic": "cypress run --spec 'cypress/integration/UI-Automation/specs/*.ts'",
     "cy:open": "cypress open"
   },
   "repository": {
