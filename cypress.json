@@ -1,4 +1,5 @@
 {
   "baseUrl": "http://automationpractice.com/index.php",
-  "projectId": "uga496"
+  "projectId": "frontend",
+  "video": true
 }

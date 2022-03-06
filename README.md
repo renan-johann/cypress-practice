@@ -2,10 +2,11 @@
 
 - [ x ] Create functional web testing
 - [ x ] Implement tests with typescript and cypress
-- [ ] Generate dashboard with sorry-cypress
+- [ X ] Generate dashboard with sorry-cypress
 - [ ] Create test evidence webhooks in Slack
 - [ ] Implement Jenkins pipeline
 - [ ] Implement functional API testing
+- [ ] Add vault
 
 ### Below the project structure
 
@@ -25,3 +26,7 @@
 | _Integrações(Github, Slack, etc.)_                                      | _Self-hosted(maquina local ou em cloud)_                                |
 | _load balancing_                                                        | _Integrações usando webhooks_                                           |
 | _Grouping of executions (environment, operating system, browser, etc.)_ | _Installation Examples with Docker, Kubernetes, and AWS CloudFormation_ |
+
+#### References
+
+<https://docs.sorry-cypress.dev/configuration/director-configuration/minio-configuration>
