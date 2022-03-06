@@ -2,8 +2,12 @@
 
 - [ x ] Create functional web testing
 - [ x ] Implement tests with typescript and cypress
+- [ x ] Create docker-compose contains images like [minio, mongo, sorry-cypress-api, sorry-cypress-director, sorry-cypress-dashboard]
 - [ X ] Generate dashboard with sorry-cypress
-- [ X ] Create test evidence webhooks in Slack
+- [ X ] Create incoming webhook for Slack
+- [ ] Create a JENKINS FILE(Declarative Pipeline) to Run CYPRESS in Jenkins PIPELINE as CI/CD
+- [ ] Create automatic Slack notification with Jenkins pipeline
+- [ ] Create CI with Github Actions
 - [ ] Implement Jenkins pipeline
 - [ ] Implement functional API testing
 - [ ] Add vault
