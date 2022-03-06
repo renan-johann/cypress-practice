@@ -3,7 +3,7 @@
 - [ x ] Create functional web testing
 - [ x ] Implement tests with typescript and cypress
 - [ X ] Generate dashboard with sorry-cypress
-- [ ] Create test evidence webhooks in Slack
+- [ X ] Create test evidence webhooks in Slack
 - [ ] Implement Jenkins pipeline
 - [ ] Implement functional API testing
 - [ ] Add vault
