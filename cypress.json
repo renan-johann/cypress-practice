@@ -1,5 +1,8 @@
 {
   "baseUrl": "http://automationpractice.com/index.php",
+  "chromeWebSecurity": false,
   "projectId": "frontend",
+  "experimentalStudio": true,
+  "screenshotOnRunFailure": true,
   "video": true
 }

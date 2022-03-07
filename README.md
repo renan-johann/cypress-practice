@@ -7,11 +7,12 @@
 - [ X ] Generate dashboard with sorry-cypress
 - [ X ] Create incoming webhook for Slack
 - [ ] Create a JENKINS FILE(Declarative Pipeline) to Run CYPRESS in Jenkins PIPELINE as CI/CD
-- [ ] Create automatic Slack notification with Jenkins pipeline
-- [ ] Create CI with Github Actions
-- [ ] Implement Jenkins pipeline
-- [ ] Implement functional API testing
+- [ ] Config JENKINS into interface
 - [ ] Add vault
+- [ ] Create automatic Slack notification with Jenkins pipeline
+- [ ] Create CI with Gitlab CI
+- [ ] Create CI with Github Actions
+- [ ] Implement functional API testing
 
 ### Below the project structure
 
@@ -21,6 +22,11 @@
 - _integration_
   - _specs_
 - _page-objects_
+
+### Pre-configure
+
+**Add into /etc/hosts**
+`127.0.0.1 storage`
 
 ### Main comparison features of paid version and Community
 
@@ -32,6 +38,6 @@
 | _load balancing_                                                        | _Integrações usando webhooks_                                           |
 | _Grouping of executions (environment, operating system, browser, etc.)_ | _Installation Examples with Docker, Kubernetes, and AWS CloudFormation_ |
 
-#### References
+### References
 
 <https://docs.sorry-cypress.dev/configuration/director-configuration/minio-configuration>
