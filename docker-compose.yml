@@ -1,4 +1,4 @@
-version: '3.6'
+version: '3.8'
 
 services:
   mongo:
@@ -19,7 +19,7 @@ services:
       MINIO_ACCESS_KEY: 'MW32h3gd6HvjBEgTRx'
       MINIO_SECRET_KEY: 't6NgQWUcEyG2AzaDCVkN6sbWcvDCVkN6sGiZ7'
       MINIO_ENDPOINT: 'storage'
-      MINIO_URL: 'http://localhost'
+      MINIO_URL: 'http://storage'
       MINIO_PORT: '9000'
       MINIO_USESSL: 'false'
       MINIO_BUCKET: sorry-cypress
@@ -56,26 +56,25 @@ services:
   storage:
     image: minio/minio
     hostname: 'storage'
+    privileged: true
     environment:
       MINIO_ACCESS_KEY: 'MW32h3gd6HvjBEgTRx'
       MINIO_SECRET_KEY: 't6NgQWUcEyG2AzaDCVkN6sbWcvDCVkN6sGiZ7'
     volumes:
       - ./data/data-minio-cypress:/data
-    command: server /data
+    command: server /data --console-address ":9001"
     ports:
       - 9000:9000
-
-  createbuckets:
-    image: minio/mc
-    depends_on:
-      - storage
-    entrypoint: >
-      /bin/sh -c "
-      sleep 3;
-      /usr/bin/mc config host add myminio http://storage:9000 MW32h3gd6HvjBEgTRx t6NgQWUcEyG2AzaDCVkN6sbWcvDCVkN6sGiZ7;
-      /usr/bin/mc rm -r --dangerous --force myminio/sorry-cypress;
-      /usr/bin/mc mb myminio/sorry-cypress;
-      /usr/bin/mc policy set download myminio/sorry-cypress;
-      /usr/bin/mc policy set public myminio/sorry-cypress;
-      exit 0;
-      "
+      - 9001:9001
+        
+  jenkins:
+    image: 'jenkinsci/blueocean:latest'
+    ports:
+      - '8084:8080'
+    volumes:
+      - 'jenkins_data:/var/jenkins_home'
+    environment:
+      - 'JENKINS_OPTS=--httpPort=8080 --httpsPort=8443'
+volumes:
+  jenkins_data:
+    driver: local
