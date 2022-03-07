@@ -2,6 +2,7 @@
 
 - [ x ] Create functional web testing
 - [ x ] Implement tests with typescript and cypress
+- [ X ] Create Dockerfile with cypress image
 - [ x ] Create docker-compose contains images like [minio, mongo, sorry-cypress-api, sorry-cypress-director, sorry-cypress-dashboard]
 - [ X ] Generate dashboard with sorry-cypress
 - [ X ] Create incoming webhook for Slack
