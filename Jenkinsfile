@@ -50,7 +50,7 @@ pipeline {
         
         stage('Testing') {
             steps {
-                withNPM(npmrcConfig:'MyNpmrcConfig') {
+                withNPM(npmrcConfig:'npm-id') {
                     sh "npm i"
                     sh "npx cypress run --browser ${BROWSER} --spec ${SPEC}"
                 }
