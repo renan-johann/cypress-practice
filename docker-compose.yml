@@ -1,4 +1,4 @@
-version: '3.6'
+version: '3.4'
 
 services:
   mongo:
@@ -48,7 +48,7 @@ services:
       PORT: 8080
       CI_URL: ''
     ports:
-      - 8080:8080
+      - 80:8080
     depends_on:
       - mongo
       - api
@@ -68,13 +68,29 @@ services:
       - 9001:9001
         
   jenkins:
+    container_name: jenkins
     image: 'jenkinsci/blueocean:latest'
     ports:
-      - '8084:8080'
+      - '8080:8080'
     volumes:
       - 'jenkins_data:/var/jenkins_home'
     environment:
       - 'JENKINS_OPTS=--httpPort=8080 --httpsPort=8443'
+
+  # editor:
+  #  image: 'mgsousa/go-jenkins-editor:latest'
+  #  ports:
+  #    - '8088:8088'
+  #  command: -jenkinsUrl http://jenkins:8080 -port 8088
+  # environment:
+  #    JENKINS_ADMIN_USERNAME: "$JENKINS_ADMIN_USERNAME"
+  #   JENKINS_ADMIN_API_TOKEN: "$JENKINS_ADMIN_API_TOKEN"
+  #  depends_on: {
+  #    "jenkins": {
+  #      "condition": "service_healthy"
+  #    }
+  #  }
+  
 volumes:
   jenkins_data:
     driver: local
