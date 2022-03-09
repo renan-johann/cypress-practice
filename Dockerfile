@@ -38,7 +38,7 @@ ENV CI=1 \
     _X11_NO_MITSHM=1 \
     _MITSHM=0
 
-RUN npm i -g typescript && npm ci &&   \
+RUN npm ci &&  \
     #npm install -g yarn@latest --force && \
     # install chrome
     wget -nv -O /usr/src/google-chrome-stable_current_amd64.deb "http://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${CHROME_VERSION}-1_amd64.deb" && \
