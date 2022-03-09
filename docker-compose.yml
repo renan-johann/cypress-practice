@@ -1,4 +1,4 @@
-version: '3.4'
+version: '3.8'
 
 services:
   mongo:
@@ -74,6 +74,9 @@ services:
       - '8080:8080'
     volumes:
       - 'jenkins_data:/var/jenkins_home'
+      - 'npm-cache:/root/.npm'
+      - 'cypress-cache:/root/.cache'
+      - '/var/run/docker.sock:/var/run/docker.sock'
     environment:
       - 'JENKINS_OPTS=--httpPort=8080 --httpsPort=8443'
 
@@ -94,3 +97,5 @@ services:
 volumes:
   jenkins_data:
     driver: local
+  npm-cache:
+  cypress-cache:
