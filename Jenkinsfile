@@ -29,7 +29,6 @@ pipeline {
         
         stage('Testing') {
             steps {
-                sh "npm i -g typescript"
                 sh "npx cypress run --headless --browser ${BROWSER} --spec ${SPEC}"
             }
         }
