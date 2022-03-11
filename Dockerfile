@@ -25,6 +25,7 @@ WORKDIR /my-cypress-project
 #Copy the essential files that we MUST use to run our scripts.
 COPY ./package.json .
 COPY ./cypress.json .
+COPY ./package-lock.json .
 COPY ./cypress ./cypress
 
 # by setting CI environment variable we switch the Cypress install messages
@@ -37,7 +38,7 @@ ENV CI=1 \
     _X11_NO_MITSHM=1 \
     _MITSHM=0
 
-RUN npm install &&  \
+RUN npm ci &&  \
     #npm install -g yarn@latest --force && \
     # install chrome
     wget -nv -O /usr/src/google-chrome-stable_current_amd64.deb "http://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${CHROME_VERSION}-1_amd64.deb" && \
