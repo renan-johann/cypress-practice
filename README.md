@@ -41,3 +41,46 @@
 ### References
 
 <https://docs.sorry-cypress.dev/configuration/director-configuration/minio-configuration>
+
+
+
+
+
+
+
+
+
+
+#### Project hierarchy structure
+.
+├── configs
+│   ├── production.json
+│   └── qa.json
+├── dashboards
+│   ├── k6-load-testing-results-by-groups.json
+│   └── k6-load-testing-results.json
+├── datapool
+│   └── products.csv
+├── reports
+│   ├── all_product_requests.html
+│   └── server_side_requestes.html
+├── tests
+│   ├── cache
+│   │   └── redis_test.js
+│   ├── database
+│   │   └── postgres_test.js
+│   └── product_page
+│       ├── all_product_requests.test.js
+│       ├── client_side_requestes.test.js
+│       └── server_side_requestes.test.js
+├── utils
+│   ├── generate_random_number.js
+│   ├── handle_configs.js
+│   └── handle_csv.js
+├── docker-compose.yml
+├── grafana-dashboard.yaml
+├── grafana-datasource.yaml
+├── index.js
+├── package-lock.json
+├── package.json
+└── README.md
