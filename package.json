@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "cy:run-sorry": "cypress run --record --key XXX --parallel --ci-build-id `date +%s`",
-    "cy:basic": "cypress run --spec 'cypress/integration/UI-Automation/specs/*.ts'",
+    "cy:basic": "cypress run --spec 'cypress/integration/UI-Automation/specs/*.js'",
     "cy:run": "cypress run",
     "cy:open": "cypress open"
   },
