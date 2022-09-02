@@ -6,11 +6,8 @@
 - [ x ] Create docker-compose contains images like [minio, mongo, sorry-cypress-api, sorry-cypress-director, sorry-cypress-dashboard]
 - [ X ] Generate dashboard with sorry-cypress
 - [ X ] Create incoming webhook for Slack
-- [ ] Create a JENKINS FILE(Declarative Pipeline) to Run CYPRESS in Jenkins PIPELINE as CI/CD
-- [ ] Config JENKINS into interface
 - [ ] Add vault
 - [ ] Create automatic Slack notification with Jenkins pipeline
-- [ ] Create CI with Gitlab CI
 - [ ] Create CI with Github Actions
 - [ ] Implement functional API testing
 
