@@ -10,7 +10,7 @@ pipeline {
     }
     
     parameters {
-        string(name: 'SPEC', defaultValue: 'cypress/integration/UI-Automation/specs/*.js', description: 'Ej: cypress/integration/pom/*.spec.js')
+        string(name: 'SPEC', defaultValue: 'cypress/e2e/UI-Automation/specs/*.js', description: 'Ej: cypress/e2e/pom/*.spec.js')
         choice(name: 'BROWSER', choices: ['chrome', 'edge', 'firefox'], description: 'Pick the web browser you want to use to run your scripts')
     }
     
