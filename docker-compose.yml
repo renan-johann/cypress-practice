@@ -1,8 +1,16 @@
 version: '3.8'
 
 services:
+
+  cypress:
+    container_name: e2e-cypress
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    # entrypoint: npm run cy:run-sorry
+
   mongo:
-    image: mongo:4.2
+    image: mongo:4.4
     volumes:
       - ./data/data-mongo-cypress:/data/db
     ports:
@@ -16,25 +24,27 @@ services:
       MONGODB_DATABASE: 'sorry-cypress'
 
       SCREENSHOTS_DRIVER: '../screenshots/minio.driver'
+      GITLAB_JOB_RETRIES: 'false'
       MINIO_ACCESS_KEY: 'MW32h3gd6HvjBEgTRx'
       MINIO_SECRET_KEY: 't6NgQWUcEyG2AzaDCVkN6sbWcvDCVkN6sGiZ7'
-      MINIO_ENDPOINT: 'storage'
-      MINIO_URL: 'http://storage'
+      MINIO_ENDPOINT: 'localhost'
+      MINIO_URL: 'http://localhost'
       MINIO_PORT: '9000'
       MINIO_USESSL: 'false'
       MINIO_BUCKET: sorry-cypress
-
+      PROBE_LOGGER: "false"
     ports:
       - 1234:1234
+      - 9000:9000
     depends_on:
       - mongo
-      - storage
 
   api:
     image: agoldis/sorry-cypress-api:latest
     environment:
       MONGODB_URI: 'mongodb://mongo:27017'
       MONGODB_DATABASE: 'sorry-cypress'
+      APOLLO_PLAYGROUND: 'false'
     ports:
       - 4000:4000
     depends_on:
@@ -48,55 +58,36 @@ services:
       PORT: 8080
       CI_URL: ''
     ports:
-      - 80:8080
+      - 8080:8080
     depends_on:
       - mongo
       - api
 
   storage:
     image: minio/minio
-    hostname: 'storage'
-    privileged: true
+    network_mode: service:director
     environment:
       MINIO_ACCESS_KEY: 'MW32h3gd6HvjBEgTRx'
       MINIO_SECRET_KEY: 't6NgQWUcEyG2AzaDCVkN6sbWcvDCVkN6sGiZ7'
     volumes:
       - ./data/data-minio-cypress:/data
-    command: server /data --console-address ":9001"
-    ports:
-      - 9000:9000
-      - 9001:9001
-        
-  jenkins:
-    container_name: jenkins
-    image: 'jenkinsci/blueocean:latest'
-    user: root
-    ports:
-      - '8080:8080'
-    volumes:
-      - 'jenkins_data:/var/jenkins_home'
-      - 'npm-cache:/root/.npm'
-      - 'cypress-cache:/root/.cache'
-      - '/var/run/docker.sock:/var/run/docker.sock'
-    environment:
-      - 'JENKINS_OPTS=--httpPort=8080 --httpsPort=8443'
+    command: server /data
+  # jenkins:
+  #   container_name: jenkins_blueocean
+  #   image: 'jenkinsci/blueocean:latest'
+  #   user: root
+  #   ports:
+  #     - '8080:8080'
+  #   volumes:
+  #     - 'jenkins_data:/var/jenkins_home'
+  #     - 'npm-cache:/root/.npm'
+  #     - 'cypress-cache:/root/.cache'
+  #     - '/var/run/docker.sock:/var/run/docker.sock'
+  #   environment:
+  #     - 'JENKINS_OPTS=--httpPort=8080 --httpsPort=8443'
 
-  # editor:
-  #  image: 'mgsousa/go-jenkins-editor:latest'
-  #  ports:
-  #    - '8088:8088'
-  #  command: -jenkinsUrl http://jenkins:8080 -port 8088
-  # environment:
-  #    JENKINS_ADMIN_USERNAME: "$JENKINS_ADMIN_USERNAME"
-  #   JENKINS_ADMIN_API_TOKEN: "$JENKINS_ADMIN_API_TOKEN"
-  #  depends_on: {
-  #    "jenkins": {
-  #      "condition": "service_healthy"
-  #    }
-  #  }
-  
-volumes:
-  jenkins_data:
-    driver: local
-  npm-cache:
-  cypress-cache:
+  # volumes:
+  #   jenkins_data:
+  #     driver: local
+  #   npm-cache:
+  #   cypress-cache:
