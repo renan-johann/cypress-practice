@@ -4,8 +4,9 @@ WORKDIR /cypress-project
 
 COPY ./package.json .
 COPY ./package-lock.json .
-COPY ./cypress.json .
+COPY ./cypress.config.js .
 COPY ./cypress ./cypress
+
 
 ENV CI=true
 RUN npm ci && \

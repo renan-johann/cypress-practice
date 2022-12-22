@@ -72,6 +72,14 @@ services:
     volumes:
       - ./data/data-minio-cypress:/data
     command: server /data
+
+  createbuckets:
+    image: minio/mc
+    network_mode: service:director
+    depends_on:
+      - storage
+    entrypoint: >
+      /bin/sh -c " sleep 3; /usr/bin/mc config host add myminio http://localhost:9000 MW32h3gd6HvjBEgTRx t6NgQWUcEyG2AzaDCVkN6sbWcvDCVkN6sGiZ7; /usr/bin/mc rm -r --dangerous --force myminio/sorry-cypress; /usr/bin/mc mb myminio/sorry-cypress; /usr/bin/mc policy set download myminio/sorry-cypress; /usr/bin/mc policy set public myminio/sorry-cypress; exit 0; "
   # jenkins:
   #   container_name: jenkins_blueocean
   #   image: 'jenkinsci/blueocean:latest'
