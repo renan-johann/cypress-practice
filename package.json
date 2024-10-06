@@ -4,12 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "cy:run-sorry": "cypress run --record --key XXX --parallel --ci-build-id `date +%s`",
+    "cy:run-sorry": "CYPRESS_API_URL='http://localhost:1234/' cy2 run --parallel --record --key somekey --ci-build-id hello-cypress",
     "cy:basic": "cypress run --spec 'cypress/e2e/e2e-testing/specs/*.js'",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
     "start": "my-server -p 3030",
-    "test": "start-server-and-test start http://localhost:3030 cy:run"
+    "test": "start-server-and-test start http://localhost:3030 cy:run",
+    "test-dockerized:e2e": "docker compose -f ./docker-compose.yml up"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,7 @@
   },
   "homepage": "https://github.com/renan-johann/cypress-practice#readme",
   "dependencies": {
+    "cy2": "^3.4.3",
     "typescript": "^4.9.3"
   },
   "devDependencies": {
