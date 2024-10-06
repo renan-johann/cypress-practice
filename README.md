@@ -1,15 +1,20 @@
 ### Goals:
 
-- [ x ] Create functional web testing
-- [ x ] Implement tests with typescript and cypress
-- [ X ] Create Dockerfile with cypress image
-- [ x ] Create docker-compose contains images like [minio, mongo, sorry-cypress-api, sorry-cypress-director, sorry-cypress-dashboard]
-- [ X ] Generate dashboard with sorry-cypress
-- [ X ] Create incoming webhook for Slack
-- [ ] Add vault
-- [ ] Create automatic Slack notification with Jenkins pipeline
-- [ ] Create CI with Github Actions
-- [ ] Implement functional API testing
+- [ x ] **Implement a Cypress test suite with TypeScript** to create clear, maintainable code, starting with the automation of 4 functional web tests as examples
+- [ x ] **Build a Dockerfile** to run Cypress tests in isolated containers
+- [ X ] **Create a comprehensive Docker Compose setup** that includes MinIO, MongoDB, Sorry Cypress API, Director, and Dashboard
+- [ x ] **Generate real-time dashboards** using Sorry Cypress for detailed test reporting
+- [ X ] **Integrate Slack with incoming webhooks** to receive real-time feedback loops notifications
+- [ ] **Implement Vault** for secure management of secrets in your tests
+- [ x ] **Automate Slack notifications** through Jenkins pipelines for enhanced CI/CD workflows
+- [ ] **Set up an initial CI pipeline with GitHub Actions** for continuous integration and testing
+- [ ] **Implement API functional testing** to extend test coverage to backend services
+- [ ] **Implement performance testing** with Cypress to ensure optimal user experience under load
+- [ ] **Establish parallel test execution** in CI pipeline to improve feedback loops
+- [ ] **Integrate code quality checks** (e.g., ESLint, Prettier) to ensure best practices in all test scripts
+- [ ] **Track and improve test coverage** using Istanbul (nyc)
+- [ ] **Create reusable custom Cypress commands** for cleaner and more efficient tests
+- [ ] **Create and configure CI pipelines** to run tests across multiple environments (development, staging, production), using environment-specific variables and settings to ensure accurate testing in each stage.
 
 ### Below the project structure
 
