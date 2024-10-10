@@ -1,33 +1,28 @@
 {
   "name": "cypress-practice",
-  "version": "1.0.0",
-  "description": "",
+  "version": "2.0.0",
+  "keywords": [
+    "Cypress",
+    "Docker",
+    "CI"
+  ],
+  "author": "Renan Johann",
+  "license": "ISC",
   "main": "index.js",
   "scripts": {
     "cy:run-sorry": "cypress run --record --key XXX --parallel --ci-build-id `date +%s`",
     "cy:basic": "cypress run --spec 'cypress/e2e/e2e-testing/specs/*.js'",
     "cy:open": "cypress open",
-    "cy:run": "cypress run",
+    "cy:run": "cypress run --browser electron",
     "start": "my-server -p 3030",
     "test": "start-server-and-test start http://localhost:3030 cy:run"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/renan-johann/cypress-practice.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/renan-johann/cypress-practice/issues"
-  },
-  "homepage": "https://github.com/renan-johann/cypress-practice#readme",
-  "dependencies": {
-    "typescript": "^4.9.3"
-  },
   "devDependencies": {
-    "cypress": "^12.0.2",
-    "standard": "^17.0.0",
-    "start-server-and-test": "^1.15.2"
+    "cypress": "^13.15.0",
+    "start-server-and-test": "^2.0.8",
+    "typescript": "^5.6.3"
+  },
+  "engines": {
+    "node": "22.6.0"
   }
 }
